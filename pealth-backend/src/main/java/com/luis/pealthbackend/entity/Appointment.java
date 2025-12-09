@@ -27,12 +27,12 @@ public class Appointment {
 
     // Relación N:1 -> Muchas citas pueden ser para una misma mascota
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pet_id")
+    @JoinColumn(name = "pet_id", foreignKey = @ForeignKey(name = "fk_appointment_pet"))
     private Pet pet;
 
     // Relación N:1 -> Muchas citas las atiende un mismo veterinario
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "veterinarian_id")
+    @JoinColumn(name = "veterinarian_id", foreignKey = @ForeignKey(name = "fk_appointment_veterinarian"))
     private Veterinarian veterinarian;
 
     // Relación 1:1 -> Una cita genera una factura (Opcional, puede ser null al principio)

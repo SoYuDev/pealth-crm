@@ -28,6 +28,8 @@ public class Invoice {
 
     // La factura es dueña de la relación con la cita
     @OneToOne
-    @JoinColumn(name = "appointment_id", unique = true) // unique=true fuerza 1 a 1 real en BD
+    @JoinColumn(name = "appointment_id",
+            foreignKey = @ForeignKey(name = "fk_invoice_appointment"),
+            unique = true) // unique=true fuerza 1 a 1 real en BD
     private Appointment appointment;
 }

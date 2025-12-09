@@ -19,7 +19,7 @@ public class Veterinarian {
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_veterinarian_pealth_user"))
     private User user;
 
     private String speciality;

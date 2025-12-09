@@ -6,7 +6,7 @@
 
 -- ID 1: Dueño (Luis)
 INSERT INTO pealth_user (id, email, password, first_name, last_name, rol)
-VALUES (1, 'luis@owner.com', '1234', 'Luis', 'García', 'OWNER');
+VALUES (1, 'luis@owner.com', '1234', 'Luis', 'Rodríguez', 'OWNER');
 
 -- ID 2: Veterinaria (Ana)
 INSERT INTO pealth_user (id, email, password, first_name, last_name, rol)

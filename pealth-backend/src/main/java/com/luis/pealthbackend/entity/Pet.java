@@ -17,6 +17,6 @@ public class Pet {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_id") // Crea la FK que conecta a Owner
+    @JoinColumn(name = "owner_id", foreignKey = @ForeignKey(name = "fk_pet_owner"))
     private Owner owner;
 }
