@@ -17,7 +17,7 @@ export class VeterinarianComponent implements OnInit {
   // 2. Creamos la variable normal (array vacío al principio)
   veterinarians: Veterinarian[] = [];
 
-  // 3. Al iniciar el componente, nos suscribimos
+  // 3. Al iniciar el componente, nos suscribimos al observable
   ngOnInit(): void {
     this.service.getAll().subscribe({
       next: (data) => {
