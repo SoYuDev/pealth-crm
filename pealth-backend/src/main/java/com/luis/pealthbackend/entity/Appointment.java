@@ -20,7 +20,9 @@ public class Appointment {
     // Usamos LocalDateTime para guardar Fecha y Hora juntas
     private LocalDateTime dateTime;
 
-    private String reason; // Motivo de la consulta (Vacuna, dolor, revision etc.)
+    @ManyToOne
+    @JoinColumn(name = "service_id")
+    private MedicalTreatment service;
     private String diagnosis; // Notas del veterinario después de la consulta.
 
     @Enumerated(EnumType.STRING)

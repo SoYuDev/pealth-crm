@@ -3,6 +3,7 @@ package com.luis.pealthbackend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,13 +20,21 @@ public class Pet {
 
     private String name;
 
+    private String photoUrl;
+    private LocalDate birthDate;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id", foreignKey = @ForeignKey(name = "fk_pet_owner"))
     private Owner owner;
 
-    @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "pet", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @Builder.Default
     private List<Appointment> appointments = new ArrayList<>();
+
+    // Borrado lógico. Si el dueño "borra" a la mascota lo ponemos en falso, pero las facturas antiguas
+    // Seguirán apuntando a la mascota
+    @Builder.Default
+    private boolean active = true;
 
     // Helper methods -- Relación bidireccional con Appointment que es la clase "hija"
     public void addAppointment(Appointment appointment) {

@@ -27,9 +27,14 @@ public class Veterinarian {
     // En este caso no ponemos orphan removal por lógica de negocio si el veterinario se enferma,
     // y hacemos Veterinarian.getAppointments().remove(cita) esto borra la cita por completo sin poder asignarla
     // a otro veterinario
-    @OneToMany(mappedBy = "veterinarian", cascade = CascadeType.ALL)
+    // Quitamos REMOVE/ALL. Si borras el objeto Java, las citas NO se borran en cascada.
+    @OneToMany(mappedBy = "veterinarian", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @Builder.Default
     private List<Appointment> appointments = new ArrayList<>();
+
+    @Builder.Default
+    @Column(nullable = false)
+    private boolean active = true;
 
     // Helper methods
     public void addAppointment(Appointment appointment) {
