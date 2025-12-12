@@ -20,7 +20,7 @@ public class Appointment {
     // Usamos LocalDateTime para guardar Fecha y Hora juntas
     private LocalDateTime dateTime;
 
-    @ManyToOne
+    @ManyToOne(fetch =  FetchType.LAZY)
     @JoinColumn(name = "medicaltreatment_id", foreignKey = @ForeignKey(name = "fk_appointment_medicaltreatment"))
     private MedicalTreatment service;
     private String diagnosis; // Notas del veterinario después de la consulta.

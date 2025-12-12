@@ -12,9 +12,9 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
-// El Owner tendrá un eligirá un "motivo" (Quizás en un desplegable) de consulta cuando agende su la cita para su mascota.
-// Relacion unidireccional ya que solo queremos navegar del padre a la hija
-// La hariamos bidireccional si por ejemplo queremos obtener todas las citas que tengan el nombre vacunacion
+// El Owner tendrá un elegirá un "motivo" (Quizás en un desplegable) de consulta cuando agende su la cita para su mascota.
+// Relación unidireccional ya que solo queremos navegar del padre a la hija
+// La haríamos bidireccional si por ejemplo queremos obtener todas las citas que tengan el nombre vacunación
 public class MedicalTreatment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

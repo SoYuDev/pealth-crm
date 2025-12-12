@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "pealth_user")
+@Table(name = "petalth_user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +28,7 @@ public class User {
     // el índice (0, 1, 2...)
     @Enumerated(EnumType.STRING)
     private Rol rol;
+
+    @Builder.Default
+    private boolean active = true;
 }

@@ -15,7 +15,7 @@ import java.util.List;
 public class Owner {
 
     @Id
-    private Long id; // No es autogenerado, ya que obtenemos el id a partir de la tabla 'pealth_user'
+    private Long id; // No es autogenerado, ya que obtenemos el id a partir de la tabla 'petalth_user'
 
     private String phone;
     private String address;
@@ -25,11 +25,10 @@ public class Owner {
     // @JoinColumn - Creamos la relación entre tablas, name da nombre a la columna, @ForeignKey da nombre al constraint
     // Aquí no hace falta poner unique = true porque estamos obteniendo la pk a partir de User lo que hace que
     // por definición todos los valores del registro sean unicos.
-    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_owner_pealth_user"))
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "fk_owner_petalth_user"))
     private User user;
 
-    // cascade + orphanRemoval -- Si borramos al Owner también se borrarán las mascotas
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "owner", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @Builder.Default // No es necesario con builder definir pets y de esta manera no sobrescribe la lista
     private List<Pet> pets = new ArrayList<>();
 
